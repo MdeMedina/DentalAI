@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Agent {
+  id             String   @id @default(uuid())
+  name           String
+  personality    String   @default("professional") // professional, friendly, empathetic
+  prompt         String?
+  operatingHours String?  // JSON string: {"start": "09:00", "end": "18:00"}
+  status         String   @default("inactive") // active, inactive
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  conversations Conversation[]
+  appointments  Appointment[]
+}
+
+model Conversation {
+  id           String    @id @default(uuid())
+  agentId      String
+  patientName  String?
+  patientPhone String?
+  platform     String    @default("web") // web, whatsapp, instagram
+  status       String    @default("open") // open, closed, requires_human
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  
+  agent    Agent     @relation(fields: [agentId], references: [id])
+  messages Message[]
+}
+
+model Message {
+  id             String   @id @default(uuid())
+  conversationId String
+  role           String   // user, assistant, system
+  content        String
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+}
+
+model Appointment {
+  id          String   @id @default(uuid())
+  agentId     String
+  patientName String
+  date        DateTime
+  status      String   @default("scheduled") // scheduled, cancelled, completed
+  createdAt   DateTime @default(now())
+
+  agent Agent @relation(fields: [agentId], references: [id])
+}
+
+model Integration {
+  id        String   @id @default(uuid())
+  type      String   @unique // whatsapp, instagram, gmail, telegram, google_calendar, google_sheets
+  isConnected Boolean  @default(false)
+  config    String?  // JSON string for credentials/tokens
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DailyMetric {
+  id        String   @id @default(uuid())
+  date      DateTime @default(now())
+  messagesSent Int @default(0)
+  appointmentsBooked Int @default(0)
+}
