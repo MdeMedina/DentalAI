@@ -49,7 +49,7 @@ const Dashboard = () => {
     return (
         <div className="space-y-6">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                Dashboard
+                Bienvenido a tu Dashboard
             </h2>
 
             {/* Stats Grid */}
