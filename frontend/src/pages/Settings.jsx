@@ -7,7 +7,7 @@ const Settings = () => {
     return (
         <div className="space-y-6">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                Settings
+                Configuración
             </h2>
 
             <div className="flex flex-col lg:flex-row gap-6">
@@ -15,16 +15,16 @@ const Settings = () => {
                 <div className="w-full lg:w-64 flex flex-col gap-2">
                     {[
                         { id: 'general', label: 'General', icon: <User size={18} /> },
-                        { id: 'notifications', label: 'Notifications', icon: <Bell size={18} /> },
-                        { id: 'security', label: 'Security', icon: <Lock size={18} /> },
-                        { id: 'appearance', label: 'Appearance', icon: <Moon size={18} /> },
+                        { id: 'notifications', label: 'Notificaciones', icon: <Bell size={18} /> },
+                        { id: 'security', label: 'Seguridad', icon: <Lock size={18} /> },
+                        { id: 'appearance', label: 'Apariencia', icon: <Moon size={18} /> },
                     ].map(tab => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === tab.id
-                                    ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.1)]'
-                                    : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                                ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.1)]'
+                                : 'text-slate-400 hover:bg-white/5 hover:text-white'
                                 }`}
                         >
                             {tab.icon}
@@ -37,27 +37,27 @@ const Settings = () => {
                 <div className="flex-1 glass p-8 rounded-2xl border border-slate-700/50">
                     {activeTab === 'general' && (
                         <div className="space-y-6">
-                            <h3 className="text-xl font-bold text-white mb-4">Clinic Information</h3>
+                            <h3 className="text-xl font-bold text-white mb-4">Información de la Clínica</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-sm text-slate-400">Clinic Name</label>
+                                    <label className="text-sm text-slate-400">Nombre de la Clínica</label>
                                     <input type="text" className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500" defaultValue="Future Smiles Dental" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm text-slate-400">Email Address</label>
+                                    <label className="text-sm text-slate-400">Dirección de Correo</label>
                                     <input type="email" className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500" defaultValue="contact@futuresmiles.com" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm text-slate-400">Phone Number</label>
+                                    <label className="text-sm text-slate-400">Número de Teléfono</label>
                                     <input type="tel" className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500" defaultValue="+1 (555) 123-4567" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm text-slate-400">Website</label>
+                                    <label className="text-sm text-slate-400">Sitio Web</label>
                                     <input type="url" className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500" defaultValue="https://futuresmiles.com" />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm text-slate-400">Address</label>
+                                <label className="text-sm text-slate-400">Dirección</label>
                                 <textarea className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 h-24 resize-none" defaultValue="123 Innovation Blvd, Tech City, TC 94043" />
                             </div>
                         </div>
@@ -65,13 +65,13 @@ const Settings = () => {
 
                     {activeTab === 'notifications' && (
                         <div className="space-y-6">
-                            <h3 className="text-xl font-bold text-white mb-4">Notification Preferences</h3>
+                            <h3 className="text-xl font-bold text-white mb-4">Preferencias de Notificación</h3>
                             <div className="space-y-4">
                                 {[
-                                    { title: 'New Appointment', desc: 'Receive alerts when a new appointment is booked.' },
-                                    { title: 'Patient Messages', desc: 'Get notified for incoming patient messages.' },
-                                    { title: 'System Updates', desc: 'Notifications about platform updates and maintenance.' },
-                                    { title: 'Daily Report', desc: 'Receive a daily summary of clinic performance.' },
+                                    { title: 'Nueva Cita', desc: 'Recibe alertas cuando se reserva una nueva cita.' },
+                                    { title: 'Mensajes de Pacientes', desc: 'Recibe notificaciones de mensajes entrantes de pacientes.' },
+                                    { title: 'Actualizaciones del Sistema', desc: 'Notificaciones sobre actualizaciones y mantenimiento de la plataforma.' },
+                                    { title: 'Reporte Diario', desc: 'Recibe un resumen diario del rendimiento de la clínica.' },
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center justify-between p-4 rounded-xl bg-slate-800/30 border border-slate-700/50">
                                         <div>
@@ -92,14 +92,14 @@ const Settings = () => {
                     {(activeTab === 'security' || activeTab === 'appearance') && (
                         <div className="h-64 flex flex-col items-center justify-center text-slate-500 border border-dashed border-slate-700 rounded-xl">
                             <Lock className="mb-4 opacity-50" size={48} />
-                            <p>Security & Appearance settings coming soon</p>
+                            <p>Configuraciones de Seguridad y Apariencia próximamente</p>
                         </div>
                     )}
 
                     <div className="mt-8 pt-6 border-t border-slate-700/50 flex justify-end">
                         <button className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white px-6 py-2 rounded-lg transition-all shadow-lg shadow-cyan-500/20">
                             <Save size={18} />
-                            Save Changes
+                            Guardar Cambios
                         </button>
                     </div>
                 </div>

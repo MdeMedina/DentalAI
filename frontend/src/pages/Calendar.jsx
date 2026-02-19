@@ -15,8 +15,8 @@ const Calendar = () => {
     const daysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
     const firstDayOfMonth = (date) => new Date(date.getFullYear(), date.getMonth(), 1).getDay();
 
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+    const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ];
 
     const prevMonth = () => {
@@ -72,7 +72,7 @@ const Calendar = () => {
             <div className="flex-1 flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                        Calendar
+                        Calendario
                     </h2>
                     <div className="flex items-center gap-4 bg-slate-800/50 rounded-xl p-1 border border-slate-700">
                         <button onClick={prevMonth} className="p-2 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">
@@ -90,7 +90,7 @@ const Calendar = () => {
                 <div className="glass rounded-2xl border border-slate-700/50 overflow-hidden flex-1 flex flex-col">
                     {/* Weekday Headers */}
                     <div className="grid grid-cols-7 border-b border-slate-700 bg-slate-900/50">
-                        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+                        {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map(day => (
                             <div key={day} className="py-3 text-center text-sm font-medium text-slate-400 uppercase tracking-wider">
                                 {day}
                             </div>
@@ -107,13 +107,13 @@ const Calendar = () => {
             {/* Side Panel for Selected Day */}
             <div className="w-80 glass rounded-2xl border border-slate-700/50 p-6 flex flex-col">
                 <h3 className="text-xl font-bold text-white mb-1">
-                    {selectedDate.toLocaleDateString('en-US', { weekday: 'long' })}
+                    {selectedDate.toLocaleDateString('es-ES', { weekday: 'long' })}
                 </h3>
                 <p className="text-slate-400 mb-6">
-                    {selectedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
+                    {selectedDate.toLocaleDateString('es-ES', { month: 'long', day: 'numeric' })}
                 </p>
 
-                <h4 className="text-sm font-medium text-slate-500 uppercase tracking-wider mb-4">Appointments</h4>
+                <h4 className="text-sm font-medium text-slate-500 uppercase tracking-wider mb-4">Citas</h4>
 
                 <div className="space-y-4 flex-1 overflow-y-auto">
                     {appointments.filter(apt => apt.date === selectedDate.getDate()).length > 0 ? (
@@ -137,8 +137,8 @@ const Calendar = () => {
                         ))
                     ) : (
                         <div className="text-center py-10 text-slate-500 border border-dashed border-slate-700 rounded-xl">
-                            <p>No appointments</p>
-                            <button className="mt-4 text-cyan-400 text-sm hover:underline">Add Appointment</button>
+                            <p>No hay citas</p>
+                            <button className="mt-4 text-cyan-400 text-sm hover:underline">Agregar Cita</button>
                         </div>
                     )}
                 </div>
