@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, Bot, MessageSquare, Calendar, Link, Settings, LogOut, Users } from 'lucide-react';
+import { LayoutDashboard, Bot, MessageSquare, Calendar, Link, Settings, LogOut, ShieldCheck, BrainCircuit } from 'lucide-react';
 
 const SidebarItem = ({ to, icon: Icon, label }) => (
     <NavLink
@@ -41,9 +41,10 @@ const Layout = () => {
                 <nav className="flex-1 space-y-2">
                     <SidebarItem to="/" icon={LayoutDashboard} label="Centro de control" />
                     <SidebarItem to="/agents" icon={Bot} label="Agentes" />
+                    <SidebarItem to="/intelligence" icon={BrainCircuit} label="Inteligencia" />
                     <SidebarItem to="/conversations" icon={MessageSquare} label="Conversaciones" />
                     <SidebarItem to="/calendar" icon={Calendar} label="Calendario" />
-                    <SidebarItem to="/patients" icon={Users} label="CRM y Pacientes" />
+                    <SidebarItem to="/security" icon={ShieldCheck} label="Seguridad y Registro" />
                     <SidebarItem to="/integrations" icon={Link} label="Integraciones" />
                 </nav>
 
