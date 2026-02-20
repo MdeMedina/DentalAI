@@ -72,7 +72,7 @@ const Calendar = () => {
             <div className="flex-1 flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                     <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                        Nuevo Calendario
+                        Calendar
                     </h2>
                     <div className="flex items-center gap-4 bg-slate-800/50 rounded-xl p-1 border border-slate-700">
                         <button onClick={prevMonth} className="p-2 hover:bg-slate-700 rounded-lg text-slate-300 transition-colors">
