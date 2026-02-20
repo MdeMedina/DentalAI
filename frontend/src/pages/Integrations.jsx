@@ -3,12 +3,12 @@ import { MessageCircle, Mail, Instagram, Calendar, FileText, Settings, Check, X,
 
 const Integrations = () => {
     const [integrations, setIntegrations] = useState([
-        { id: 1, name: 'WhatsApp Business', icon: <MessageCircle size={32} />, status: 'connected', description: 'Manage patient chats directly via WhatsApp API.' },
-        { id: 2, name: 'Instagram Direct', icon: <Instagram size={32} />, status: 'disconnected', description: 'Reply to DMs and story mentions automatically.' },
-        { id: 3, name: 'Google Calendar', icon: <Calendar size={32} />, status: 'connected', description: 'Sync appointments with your clinic\'s main calendar.' },
-        { id: 4, name: 'Gmail', icon: <Mail size={32} />, status: 'disconnected', description: 'Send follow-up emails and treatment plans.' },
-        { id: 5, name: 'Telegram', icon: <MessageCircle size={32} />, status: 'disconnected', description: 'Alternative channel for patient support.' },
-        { id: 6, name: 'EHR System', icon: <FileText size={32} />, status: 'error', description: 'Connect to your Electronic Health Records database.' },
+        { id: 1, name: 'WhatsApp Business', icon: <MessageCircle size={32} />, status: 'connected', description: 'Gestiona chats de pacientes directamente vía WhatsApp API.' },
+        { id: 2, name: 'Instagram Direct', icon: <Instagram size={32} />, status: 'disconnected', description: 'Responde a DMs y menciones en historias automáticamente.' },
+        { id: 3, name: 'Google Calendar', icon: <Calendar size={32} />, status: 'connected', description: 'Sincroniza citas con el calendario principal de tu clínica.' },
+        { id: 4, name: 'Gmail', icon: <Mail size={32} />, status: 'disconnected', description: 'Envía correos de seguimiento y planes de tratamiento.' },
+        { id: 5, name: 'Telegram', icon: <MessageCircle size={32} />, status: 'disconnected', description: 'Canal alternativo para soporte al paciente.' },
+        { id: 6, name: 'EHR System', icon: <FileText size={32} />, status: 'error', description: 'Conecta a tu base de datos de Registros Electrónicos de Salud.' },
     ]);
 
     const toggleStatus = (id) => {
@@ -26,10 +26,10 @@ const Integrations = () => {
     return (
         <div className="space-y-6">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-                Integrations Hub
+                Centro de Integraciones
             </h2>
             <p className="text-slate-400 max-w-2xl">
-                Connect your AI agents to the tools you use every day. Manage permissions and configure specific settings for each integration.
+                Conecta tus agentes de IA a las herramientas que usas a diario. Gestiona permisos y configura ajustes específicos para cada integración.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -40,11 +40,11 @@ const Integrations = () => {
                                 {integration.icon}
                             </div>
                             <div className={`px-3 py-1 rounded-full text-xs font-medium border ${integration.status === 'connected' ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' :
-                                    integration.status === 'error' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
-                                        'bg-slate-700/50 text-slate-400 border-slate-600'
+                                integration.status === 'error' ? 'bg-red-500/20 text-red-400 border-red-500/30' :
+                                    'bg-slate-700/50 text-slate-400 border-slate-600'
                                 }`}>
-                                {integration.status === 'connected' ? 'Connected' :
-                                    integration.status === 'error' ? 'Error' : 'Disconnected'}
+                                {integration.status === 'connected' ? 'Conectado' :
+                                    integration.status === 'error' ? 'Error' : 'Desconectado'}
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@ const Integrations = () => {
                         <div className="flex items-center justify-between pt-4 border-t border-slate-700/50">
                             <button className="flex items-center gap-2 text-sm text-slate-400 hover:text-cyan-400 transition-colors">
                                 <Settings size={16} />
-                                Configure
+                                Configurar
                             </button>
 
                             <button
@@ -70,11 +70,11 @@ const Integrations = () => {
 
             <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-cyan-900/20 to-blue-900/20 border border-cyan-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Need a custom integration?</h3>
-                    <p className="text-slate-400">Our team can build custom connectors for your specific dental software.</p>
+                    <h3 className="text-xl font-bold text-white mb-2">¿Necesitas una integración personalizada?</h3>
+                    <p className="text-slate-400">Nuestro equipo puede construir conectores personalizados para el software de tu clínica.</p>
                 </div>
                 <button className="flex items-center gap-2 bg-white text-slate-900 px-6 py-3 rounded-xl font-bold hover:bg-slate-200 transition-colors">
-                    Contact Support <ExternalLink size={18} />
+                    Contactar Soporte <ExternalLink size={18} />
                 </button>
             </div>
         </div>

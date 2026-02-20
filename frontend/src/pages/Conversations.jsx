@@ -10,7 +10,7 @@ const Conversations = () => {
         {
             id: 1,
             patient: 'Maria Garcia',
-            lastMessage: 'Is it possible to reschedule?',
+            lastMessage: '¿Es posible reprogramar?',
             time: '10:42 AM',
             unread: 2,
             avatar: 'MG',
@@ -19,8 +19,8 @@ const Conversations = () => {
         {
             id: 2,
             patient: 'John Smith',
-            lastMessage: 'Thanks, see you then.',
-            time: 'Yesterday',
+            lastMessage: 'Gracias, nos vemos entonces.',
+            time: 'Ayer',
             unread: 0,
             avatar: 'JS',
             status: 'offline'
@@ -28,8 +28,8 @@ const Conversations = () => {
         {
             id: 3,
             patient: 'Robert Johnson',
-            lastMessage: 'How much for a whitening?',
-            time: 'Mon',
+            lastMessage: '¿Cuánto cuesta un blanqueamiento?',
+            time: 'Lun',
             unread: 0,
             avatar: 'RJ',
             status: 'online'
@@ -37,10 +37,10 @@ const Conversations = () => {
     ];
 
     const messages = [
-        { id: 1, sender: 'ai', text: 'Hello Maria, this is Dr. Sarah from Dental AI. How can I help you today?', time: '10:30 AM' },
-        { id: 2, sender: 'patient', text: 'Hi, I have an appointment tomorrow at 2 PM.', time: '10:32 AM' },
-        { id: 3, sender: 'ai', text: 'Yes, I see that appointment. Would you like to confirm it?', time: '10:33 AM' },
-        { id: 4, sender: 'patient', text: 'Actually, something came up. Is it possible to reschedule?', time: '10:42 AM' },
+        { id: 1, sender: 'ai', text: 'Hola Maria, soy la Dra. Sarah de Dental AI. ¿En qué puedo ayudarte hoy?', time: '10:30 AM' },
+        { id: 2, sender: 'patient', text: 'Hola, tengo una cita mañana a las 2 PM.', time: '10:32 AM' },
+        { id: 3, sender: 'ai', text: 'Sí, veo esa cita. ¿Te gustaría confirmarla?', time: '10:33 AM' },
+        { id: 4, sender: 'patient', text: 'En realidad, surgió algo. ¿Es posible reprogramar?', time: '10:42 AM' },
     ];
 
     const handleSendMessage = (e) => {
@@ -58,12 +58,12 @@ const Conversations = () => {
             {/* Sidebar - Conversation List */}
             <div className="w-80 glass rounded-2xl border border-slate-700/50 flex flex-col overflow-hidden">
                 <div className="p-4 border-b border-slate-700/50">
-                    <h2 className="text-xl font-bold text-white mb-4">Messages</h2>
+                    <h2 className="text-xl font-bold text-white mb-4">Mensajes</h2>
                     <div className="relative">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                         <input
                             type="text"
-                            placeholder="Search patients..."
+                            placeholder="Buscar pacientes..."
                             className="w-full bg-slate-800/50 border border-slate-700 rounded-lg pl-10 pr-4 py-2 text-white focus:outline-none focus:border-cyan-500 transition-colors"
                         />
                     </div>
@@ -141,7 +141,7 @@ const Conversations = () => {
                             value={messageInput}
                             onChange={(e) => setMessageInput(e.target.value)}
                             className="w-full bg-slate-800/50 border border-slate-700 rounded-xl pl-4 pr-12 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
-                            placeholder="Type a message to intercept..."
+                            placeholder="Escribe un mensaje para interceptar..."
                         />
                         <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-cyan-500 text-white rounded-lg hover:bg-cyan-400 transition-colors shadow-lg shadow-cyan-500/20">
                             <Send size={18} />
