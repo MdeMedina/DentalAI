@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 
 import AgentControl from './pages/AgentControl';
+import Intelligence from './pages/Intelligence';
 
 import Conversations from './pages/Conversations';
 
@@ -11,7 +12,7 @@ import Calendar from './pages/Calendar';
 
 import Integrations from './pages/Integrations';
 
-import Patients from './pages/Patients';
+import SecurityLog from './pages/SecurityLog';
 
 import Settings from './pages/Settings';
 
@@ -32,9 +33,10 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="agents" element={<AgentControl />} />
+          <Route path="intelligence" element={<Intelligence />} />
           <Route path="conversations" element={<Conversations />} />
           <Route path="calendar" element={<Calendar />} />
-          <Route path="patients" element={<Patients />} />
+          <Route path="security" element={<SecurityLog />} />
           <Route path="integrations" element={<Integrations />} />
           <Route path="settings" element={<Settings />} />
         </Route>
