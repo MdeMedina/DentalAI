@@ -4,7 +4,7 @@ import {
     FlaskConical, History, Clock, User, ChevronRight,
     Plus, Trash2, Save, Send, RotateCcw, CheckCircle2,
     AlertCircle, Smile, Frown, Zap, ShieldCheck, FileText,
-    ChevronDown, X, Edit3
+    ChevronDown, X, Edit3, Target, Sparkles, Info
 } from 'lucide-react';
 
 /* ─────────────────────────── helpers ─────────────────────────── */
@@ -215,6 +215,12 @@ const TabGeneral = () => {
 };
 
 /* ─────────────────────────── TAB 2 ─────────────────────────── */
+const TEMPLATE_ROL = `El agente representa a la clínica dental con profesionalismo y calidez. Su misión es acompañar a cada paciente desde el primer contacto: resolver dudas, gestionar citas y derivar a tiempo cuando la situación lo requiere.
+
+Actúa con empatía, claridad y respeto. Nunca improvisa información médica. Cuando detecta urgencias, prioriza la seguridad del paciente por encima de cualquier otro objetivo.
+
+Su propósito es que cada persona que contacte la clínica sienta que está en buenas manos, incluso antes de pisar la sala de espera.`;
+
 const TabComportamiento = () => {
     const [tone, setTone] = useState('cercano');
     const [detail, setDetail] = useState('breve');
@@ -222,6 +228,14 @@ const TabComportamiento = () => {
     const [urgencyDetect, setUrgencyDetect] = useState(true);
     const [urgencyDerive, setUrgencyDerive] = useState(true);
     const [saved, setSaved] = useState(false);
+    const [rolObj, setRolObj] = useState('');
+    const [templateApplied, setTemplateApplied] = useState(false);
+
+    const applyTemplate = () => {
+        setRolObj(TEMPLATE_ROL);
+        setTemplateApplied(true);
+        setTimeout(() => setTemplateApplied(false), 2000);
+    };
 
     const handleSave = () => {
         setSaved(true);
@@ -229,7 +243,57 @@ const TabComportamiento = () => {
     };
 
     return (
-        <div className="space-y-6 max-w-3xl">
+        <div className="space-y-6 max-w-3xl mx-auto">
+
+            {/* ── ROL Y OBJETIVO ── */}
+            <GlassCard className="p-6 space-y-5">
+                <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-600/20 border border-violet-500/25 flex items-center justify-center shrink-0">
+                            <Target size={17} className="text-violet-400" />
+                        </div>
+                        <div>
+                            <h3 className="text-base font-semibold text-white">Rol y Objetivo del Agente</h3>
+                            <p className="text-xs text-slate-500 mt-0.5">Define la misión estratégica que guía cada interacción</p>
+                        </div>
+                    </div>
+                    <button
+                        onClick={applyTemplate}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium shrink-0 transition-all duration-300 ${templateApplied
+                            ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-400'
+                            : 'bg-violet-500/10 border border-violet-500/25 hover:bg-violet-500/20 text-violet-300 hover:text-violet-200'
+                            }`}
+                    >
+                        {templateApplied
+                            ? <><CheckCircle2 size={12} /> Aplicado</>
+                            : <><Sparkles size={12} /> Usar plantilla recomendada</>
+                        }
+                    </button>
+                </div>
+
+                <div className="relative">
+                    <textarea
+                        value={rolObj}
+                        onChange={e => setRolObj(e.target.value)}
+                        rows={7}
+                        placeholder={`Describe el propósito central del agente y cómo debe relacionarse con los pacientes.\n\nEjemplo: "Acompaña a cada persona desde el primer contacto con profesionalismo y calidez. Gestiona citas, responde consultas y detecta urgencias con precisión y empatía."`}
+                        className="w-full bg-slate-900/60 border border-slate-700/50 hover:border-slate-600/60 focus:border-violet-500/60 focus:ring-1 focus:ring-violet-500/20 rounded-xl px-4 py-3.5 text-white text-sm leading-relaxed transition-all duration-200 resize-none outline-none placeholder:text-slate-600"
+                    />
+                    {rolObj && (
+                        <div className="absolute bottom-3 right-3">
+                            <span className="text-xs text-slate-600">{rolObj.length} caract.</span>
+                        </div>
+                    )}
+                </div>
+
+                <div className="flex items-start gap-3 bg-violet-500/6 border border-violet-500/15 rounded-xl px-4 py-3">
+                    <Info size={15} className="text-violet-400 shrink-0 mt-0.5" />
+                    <p className="text-xs text-slate-400 leading-relaxed">
+                        Este campo define la <span className="text-violet-300 font-medium">directriz central</span> del agente.
+                        Cuanto más claro sea su propósito, más coherente y efectiva será su atención en cada conversación.
+                    </p>
+                </div>
+            </GlassCard>
             <GlassCard className="p-6 space-y-6">
                 <h3 className="text-base font-semibold text-white flex items-center gap-2">
                     <MessageSquare size={16} className="text-cyan-400" /> Estilo de comunicación
@@ -516,7 +580,7 @@ const TabSimulador = () => {
     const testUrgency = () => sendMessage('Tengo un dolor muy fuerte en la muela y no puedo dormir, es una emergencia', true);
 
     return (
-        <div className="max-w-2xl">
+        <div className="max-w-2xl mx-auto">
             <GlassCard className="overflow-hidden">
                 {/* Chat header */}
                 <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3 bg-slate-900/30">
